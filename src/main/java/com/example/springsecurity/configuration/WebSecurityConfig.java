@@ -4,6 +4,7 @@ import com.example.springsecurity.filter.JWTAuthenticationFilter;
 import com.example.springsecurity.filter.JWTAuthorizationFilter;
 import com.example.springsecurity.filter.JwtAccessDeniedHandler;
 import com.example.springsecurity.filter.JwtAuthenticationEntryPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +23,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import static com.example.springsecurity.constant.SecurityConstants.SIGN_UP_URL;
 
-@Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDetailsService;
@@ -56,8 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-        /*auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-        auth.inMemoryAuthentication()
+        /*auth.inMemoryAuthentication()
                 .withUser("nonono")
                 .password("1234")
                 .roles("ADMIN");*/

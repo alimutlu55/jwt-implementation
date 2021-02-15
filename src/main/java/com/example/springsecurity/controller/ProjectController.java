@@ -5,14 +5,13 @@ import com.example.springsecurity.models.Project;
 
 import com.example.springsecurity.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -21,19 +20,20 @@ import java.util.List;
 @RequestMapping("/projects")
 public class ProjectController {
 
-    @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
     public ProjectController(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
-    @PostMapping
-    public void addProject(@RequestBody Project project) {
+    @PostMapping(path = "/")
+    public ResponseEntity<Project> addProject(@RequestBody Project project) {
         projectRepository.save(project);
+        return ResponseEntity.ok(project);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping(path = "/")
     public List<Project> getProjects() {
         System.out.println("getProjectse geldi");
         return projectRepository.findAll();

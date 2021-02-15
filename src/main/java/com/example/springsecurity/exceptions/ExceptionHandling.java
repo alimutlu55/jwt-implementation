@@ -1,7 +1,7 @@
 package com.example.springsecurity.exceptions;
 
 
-import com.auth0.jwt.exceptions.TokenExpiredException;
+/*import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.example.springsecurity.exceptions.domain.UserNameExistException;
 import com.example.springsecurity.exceptions.domain.UserNotFoundException;
 import com.example.springsecurity.models.HttpResponse;
@@ -118,3 +118,4 @@ public class ExceptionHandling implements ErrorController {
         return ERROR_PATH;
     }
 }
+*/
